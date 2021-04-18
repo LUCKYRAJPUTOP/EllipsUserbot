@@ -8,7 +8,7 @@ from userbot.Config import Config
 from var import Var
 
 StartTime = time.time()
-mafiaversion = "2.0"
+darkversion = "2.0"
 botversion = "0.1"
 
 os.system("pip install --upgrade pip")
@@ -31,7 +31,7 @@ LOAD_PLUG = {}
 # PaperPlaneExtended Support Vars
 ENV = os.environ.get("ENV", False)
 
-mafia_ID = ["1212368262"]
+dark_ID = ["1212368262"]
 
 """ PPE initialization. """
 
@@ -149,7 +149,7 @@ except:
     # Upstream Repo
     UPSTREAM_REPO_URL = os.environ.get(
     "UPSTREAM_REPO_URL",
-    "https://github.com/H1M4N5HU0P/MAFIABOT.git")
+    "https://github.com/H1M4N5HU0P/darkbot.git")
 
     # Last.fm Module
     BIO_PREFIX = os.environ.get("BIO_PREFIX", None)
@@ -208,5 +208,5 @@ SUDO_LIST = {}
 
 
 from userbot.helpers import *
-from userbot.helpers import functions as mafiadef
+from userbot.helpers import functions as darkdef
 from userbot.cmdhelp import CmdHelp

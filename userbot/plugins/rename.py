@@ -13,7 +13,7 @@ from hachoir.metadata import extractMetadata
 from hachoir.parser import createParser
 from telethon.tl.types import DocumentAttributeVideo
 
-from mafiabot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from darkbot.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 thumb_image_path = Config.TMP_DOWNLOAD_DIRECTORY + "/thumb_image.jpg"
@@ -184,7 +184,7 @@ async def _(event):
                     event.chat_id,
                     downloaded_file_name,
                     thumb=thumb,
-                    caption="reuploaded by [MafiaBot](https://t.me/MafiaBot_Chit_Chat)",
+                    caption="reuploaded by [darkbot](https://t.me/darkbot_Chit_Chat)",
                     force_document=False,
                     allow_cache=False,
                     reply_to=event.message.id,

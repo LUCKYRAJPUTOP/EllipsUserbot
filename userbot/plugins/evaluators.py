@@ -6,7 +6,7 @@ import os
 import sys
 import traceback
 
-from mafiabot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from darkbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot import *
 from userbot.cmdhelp import CmdHelp
 
@@ -18,17 +18,17 @@ async def _(event):
     cmd = "".join(event.text.split(maxsplit=1)[1:])
     if not cmd:
         return await edit_delete(event, "`What should i execute?..`")
-    mafiaevent = await edit_or_reply(event, "`Executing.....`")
-    process = await asyncio.create_subprocess_smafia(
+    darkevent = await edit_or_reply(event, "`Executing.....`")
+    process = await asyncio.create_subprocess_sdark(
         cmd, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
     )
     stdout, stderr = await process.communicate()
     result = str(stdout.decode().strip()) + str(stderr.decode().strip())
-    mafiauser = await event.client.get_me()
-    if mafiauser.username:
-        curruser = mafiauser.username
+    darkuser = await event.client.get_me()
+    if darkuser.username:
+        curruser = darkuser.username
     else:
-        curruser = "mafiabot"
+        curruser = "darkbot"
     uid = os.geteuid()
     if uid == 0:
         cresult = f"`{curruser}:~#` `{cmd}`\n`{result}`"
@@ -55,7 +55,7 @@ async def _(event):
     cmd = "".join(event.text.split(maxsplit=1)[1:])
     if not cmd:
         return await edit_delete(event, "`What should i run ?..`")
-    mafiaevent = await edit_or_reply(event, "`Running ...`")
+    darkevent = await edit_or_reply(event, "`Running ...`")
     old_stderr = sys.stderr
     old_stdout = sys.stdout
     redirected_output = sys.stdout = io.StringIO()
@@ -80,7 +80,7 @@ async def _(event):
         evaluation = "Success"
     final_output = f"**•  Eval : **\n`{cmd}` \n\n**•  Result : **\n`{evaluation}` \n"
     await edit_or_reply(
-        mafiaevent,
+        darkevent,
         text=final_output,
         aslink=True,
         linktext=f"**•  Eval : **\n`{cmd}` \n\n**•  Result : **\n",
@@ -148,7 +148,7 @@ async def _(event):
 CmdHelp("evaluators").add_command(
   'eval', '<expr>', 'Execute python script'
 ).add_command(
-  'exec', '<command>', 'Execute a Terminal command on MafiaBot server and shows details'
+  'exec', '<command>', 'Execute a Terminal command on darkbot server and shows details'
 ).add_command(
   'bash', '<query>', 'Bash your codes on linux and gives the output in current chat'
 ).add()

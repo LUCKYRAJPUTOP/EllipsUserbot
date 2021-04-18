@@ -1,7 +1,7 @@
 """
 credits to @mrconfused and @sandy1709
 """
-# Kang with credits. Using in mafiabot...
+# Kang with credits. Using in darkbot...
 #    Copyright (C) 2020  sandeep.n(π.$)
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -29,245 +29,245 @@ from userbot.helpers.functions import (
     trap,
     trash,
 )
-from mafiabot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from darkbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 from . import *
 
 
 @bot.on(admin_cmd(pattern="threats(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="threats(?: |$)(.*)", allow_sudo=True))
-async def mafiabot(mafiamemes):
-    replied = await mafiamemes.get_reply_message()
+async def darkbot(darkmemes):
+    replied = await darkmemes.get_reply_message()
     if not os.path.isdir("./temp/"):
         os.makedirs("./temp/")
     if not replied:
         await edit_or_reply(
-            mafiamemes, "`Media file not supported. Reply to a supported media`"
+            darkmemes, "`Media file not supported. Reply to a supported media`"
         )
         return
     if replied.media:
-        mafiamemmes = await edit_or_reply(mafiamemes, "`Detecting Threats.........`")
+        darkmemmes = await edit_or_reply(darkmemes, "`Detecting Threats.........`")
     else:
         await edit_or_reply(
-            mafiamemes, "`Media file not supported. Reply to a suported media`"
+            darkmemes, "`Media file not supported. Reply to a suported media`"
         )
         return
     try:
-        mafia = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-        mafia = Get(mafia)
-        await mafiamemes.client(mafia)
+        dark = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+        dark = Get(dark)
+        await darkmemes.client(dark)
     except BaseException:
         pass
-    download_location = await mafiamemes.client.download_media(replied, "./temp/")
+    download_location = await darkmemes.client.download_media(replied, "./temp/")
     if download_location.endswith((".webp")):
         download_location = convert_toimage(download_location)
     size = os.stat(download_location).st_size
     if download_location.endswith((".jpg", ".jpeg", ".png", ".bmp", ".ico")):
         if size > 5242880:
-            await mafiamemmes.edit(
+            await darkmemmes.edit(
                 "`The replied file is not supported. It should be less than 5mb -_-`"
             )
             os.remove(download_location)
             return
-        await mafiamemmes.edit("`Detected Threats....`")
+        await darkmemmes.edit("`Detected Threats....`")
     else:
-        await mafiamemmes.edit("`the replied file is not supported`")
+        await darkmemmes.edit("`the replied file is not supported`")
         os.remove(download_location)
         return
     try:
         response = upload_file(download_location)
         os.remove(download_location)
     except exceptions.TelegraphException as exc:
-        await mafiamemmes.edit("ERROR: " + str(exc))
+        await darkmemmes.edit("ERROR: " + str(exc))
         os.remove(download_location)
         return
-    mafia = f"https://telegra.ph{response[0]}"
-    mafia = await threats(mafia)
-    await mafiamemmes.delete()
-    await mafiamemes.client.send_file(mafiamemes.chat_id, mafia, reply_to=replied)
+    dark = f"https://telegra.ph{response[0]}"
+    dark = await threats(dark)
+    await darkmemmes.delete()
+    await darkmemes.client.send_file(darkmemes.chat_id, dark, reply_to=replied)
 
 
 @bot.on(admin_cmd(pattern="trash(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="trash(?: |$)(.*)", allow_sudo=True))
-async def mafiabot(mafiamemes):
-    replied = await mafiamemes.get_reply_message()
+async def darkbot(darkmemes):
+    replied = await darkmemes.get_reply_message()
     if not os.path.isdir("./temp/"):
         os.makedirs("./temp/")
     if not replied:
         await edit_or_reply(
-            mafiamemes, "`Media file not supported. Reply to a suported media`"
+            darkmemes, "`Media file not supported. Reply to a suported media`"
         )
         return
     if replied.media:
-        mafiamemmes = await edit_or_reply(mafiamemes, "`Detecting Trash....`")
+        darkmemmes = await edit_or_reply(darkmemes, "`Detecting Trash....`")
     else:
         await edit_or_reply(
-            mafiamemes, "`Media file not supported. Reply to a suported media`"
+            darkmemes, "`Media file not supported. Reply to a suported media`"
         )
         return
     try:
-        mafia = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-        mafia = Get(mafia)
-        await mafiamemes.client(mafia)
+        dark = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+        dark = Get(dark)
+        await darkmemes.client(dark)
     except BaseException:
         pass
-    download_location = await mafiamemes.client.download_media(replied, "./temp/")
+    download_location = await darkmemes.client.download_media(replied, "./temp/")
     if download_location.endswith((".webp")):
         download_location = convert_toimage(download_location)
     size = os.stat(download_location).st_size
     if download_location.endswith((".jpg", ".jpeg", ".png", ".bmp", ".ico")):
         if size > 5242880:
-            await mafiamemmes.edit(
+            await darkmemmes.edit(
                 "`The replied file is not suported. Its size should be less than 5mb-_-`"
             )
             os.remove(download_location)
             return
-        await mafiamemmes.edit("`Detected Trash.....`")
+        await darkmemmes.edit("`Detected Trash.....`")
     else:
-        await mafiamemmes.edit("Media file not supported. Reply to a suported media")
+        await darkmemmes.edit("Media file not supported. Reply to a suported media")
         os.remove(download_location)
         return
     try:
         response = upload_file(download_location)
         os.remove(download_location)
     except exceptions.TelegraphException as exc:
-        await mafiamemmes.edit("ERROR: " + str(exc))
+        await darkmemmes.edit("ERROR: " + str(exc))
         os.remove(download_location)
         return
-    mafia = f"https://telegra.ph{response[0]}"
-    mafia = await trash(mafia)
-    await mafiamemmes.delete()
-    await mafiamemes.client.send_file(mafiamemes.chat_id, mafia, reply_to=replied)
+    dark = f"https://telegra.ph{response[0]}"
+    dark = await trash(dark)
+    await darkmemmes.delete()
+    await darkmemes.client.send_file(darkmemes.chat_id, dark, reply_to=replied)
 
 
 @bot.on(admin_cmd(pattern="trap(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="trap(?: |$)(.*)", allow_sudo=True))
-async def mafiabot(mafiamemes):
-    input_str = mafiamemes.pattern_match.group(1)
+async def darkbot(darkmemes):
+    input_str = darkmemes.pattern_match.group(1)
     input_str = deEmojify(input_str)
     if "-" in input_str:
         text1, text2 = input_str.split("-")
     else:
         await edit_or_reply(
-            mafiamemes,
+            darkmemes,
             "**Command :** Reply to image or sticker with `.trap (name of the person to trap)-(trapper name)`",
         )
         return
-    replied = await mafiamemes.get_reply_message()
+    replied = await darkmemes.get_reply_message()
     if not os.path.isdir("./temp/"):
         os.makedirs("./temp/")
     if not replied:
         await edit_or_reply(
-            mafiamemes, "Media file not supported. Reply to a suported media"
+            darkmemes, "Media file not supported. Reply to a suported media"
         )
         return
     if replied.media:
-        mafiamemmes = await edit_or_reply(mafiamemes, "`Trapping.....`")
+        darkmemmes = await edit_or_reply(darkmemes, "`Trapping.....`")
     else:
         await edit_or_reply(
-            mafiamemes, "Media file not supported. Reply to a suported media"
+            darkmemes, "Media file not supported. Reply to a suported media"
         )
         return
     try:
-        mafia = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-        mafia = Get(mafia)
-        await mafiamemes.client(mafia)
+        dark = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+        dark = Get(dark)
+        await darkmemes.client(dark)
     except BaseException:
         pass
-    download_location = await mafiamemes.client.download_media(replied, "./temp/")
+    download_location = await darkmemes.client.download_media(replied, "./temp/")
     if download_location.endswith((".webp")):
         download_location = convert_toimage(download_location)
     size = os.stat(download_location).st_size
     if download_location.endswith((".jpg", ".jpeg", ".png", ".bmp", ".ico")):
         if size > 5242880:
-            await mafiamemmes.edit(
+            await darkmemmes.edit(
                 "the replied file size is not supported it must me below 5 mb"
             )
             os.remove(download_location)
             return
-        await mafiamemmes.edit("`Trapped...`")
+        await darkmemmes.edit("`Trapped...`")
     else:
-        await mafiamemmes.edit("Media file not supported. Reply to a suported media")
+        await darkmemmes.edit("Media file not supported. Reply to a suported media")
         os.remove(download_location)
         return
     try:
         response = upload_file(download_location)
         os.remove(download_location)
     except exceptions.TelegraphException as exc:
-        await mafiamemmes.edit("ERROR: " + str(exc))
+        await darkmemmes.edit("ERROR: " + str(exc))
         os.remove(download_location)
         return
-    mafia = f"https://telegra.ph{response[0]}"
-    mafia = await trap(text1, text2, mafia)
-    await mafiamemmes.delete()
-    await mafiamemes.client.send_file(mafiamemes.chat_id, mafia, reply_to=replied)
+    dark = f"https://telegra.ph{response[0]}"
+    dark = await trap(text1, text2, dark)
+    await darkmemmes.delete()
+    await darkmemes.client.send_file(darkmemes.chat_id, dark, reply_to=replied)
 
 
 @bot.on(admin_cmd(pattern="phc(?: |$)(.*)"))
 @bot.on(sudo_cmd(pattern="phc(?: |$)(.*)", allow_sudo=True))
-async def mafiabot(mafiamemes):
-    input_str = mafiamemes.pattern_match.group(1)
+async def darkbot(darkmemes):
+    input_str = darkmemes.pattern_match.group(1)
     input_str = deEmojify(input_str)
     if "-" in input_str:
         username, text = input_str.split("-")
     else:
         await edit_or_reply(
-            mafiamemes,
+            darkmemes,
             "**Command :** reply to image or sticker with `.phc (username)-(text in comment)`",
         )
         return
-    replied = await mafiamemes.get_reply_message()
+    replied = await darkmemes.get_reply_message()
     if not os.path.isdir("./temp/"):
         os.makedirs("./temp/")
     if not replied:
         await edit_or_reply(
-            mafiamemes, "Media file not supported. Reply to a suported media"
+            darkmemes, "Media file not supported. Reply to a suported media"
         )
         return
     if replied.media:
-        mafiamemmes = await edit_or_reply(mafiamemes, "`Making A Comment`.")
+        darkmemmes = await edit_or_reply(darkmemes, "`Making A Comment`.")
     else:
         await edit_or_reply(
-            mafiamemes, "Media file not supported. Reply to a suported media"
+            darkmemes, "Media file not supported. Reply to a suported media"
         )
         return
     try:
-        mafia = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
-        mafia = Get(mafia)
-        await mafiamemes.client(mafia)
+        dark = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+        dark = Get(dark)
+        await darkmemes.client(dark)
     except BaseException:
         pass
-    download_location = await mafiamemes.client.download_media(replied, "./temp/")
+    download_location = await darkmemes.client.download_media(replied, "./temp/")
     if download_location.endswith((".webp")):
         download_location = convert_toimage(download_location)
     size = os.stat(download_location).st_size
     if download_location.endswith((".jpg", ".jpeg", ".png", ".bmp", ".ico")):
         if size > 5242880:
-            await mafiamemmes.edit(
+            await darkmemmes.edit(
                 "the replied file size is not supported it must me below 5 mb"
             )
             os.remove(download_location)
             return
-        await mafiamemmes.edit("Commented....")
+        await darkmemmes.edit("Commented....")
     else:
-        await mafiamemmes.edit("Media file not supported. Reply to a suported media")
+        await darkmemmes.edit("Media file not supported. Reply to a suported media")
         os.remove(download_location)
         return
     try:
         response = upload_file(download_location)
         os.remove(download_location)
     except exceptions.TelegraphException as exc:
-        await mafiamemmes.edit("ERROR: " + str(exc))
+        await darkmemmes.edit("ERROR: " + str(exc))
         os.remove(download_location)
         return
-    mafia = f"https://telegra.ph{response[0]}"
-    mafia = await phcomment(mafia, text, username)
-    await mafiamemmes.delete()
-    await mafiamemes.client.send_file(mafiamemes.chat_id, mafia, reply_to=replied)
+    dark = f"https://telegra.ph{response[0]}"
+    dark = await phcomment(dark, text, username)
+    await darkmemmes.delete()
+    await darkmemes.client.send_file(darkmemes.chat_id, dark, reply_to=replied)
 
 
 CmdHelp("prank").add_command(
-  "phc", "<reply to img> <name> - <comment>", "Changes the given pic to dp and shows a comment in phub with the given name", "<reply to img/stcr> .phc NAME - mafiaO PHUB"
+  "phc", "<reply to img> <name> - <comment>", "Changes the given pic to dp and shows a comment in phub with the given name", "<reply to img/stcr> .phc NAME - darkO PHUB"
 ).add_command(
   "trap", "<reply to img/stcr> <victim name> - <trapper name>", "Changes the given pic to another pic which shows that pic content is trapped in trap card", "<reply to img/stcr> .trap Loda - Lassan"
 ).add_command(
@@ -275,5 +275,5 @@ CmdHelp("prank").add_command(
 ).add_command(
   "threats", "<reply to image/sticker>", "Changes the given pic to another pic which shows that pic content is threat to society as that of nuclear bomb"
 ).add_command(
-  "prank", None, "If this module doesn't work then contact admins in @MafiaBot_Chit_Chat"
+  "prank", None, "If this module doesn't work then contact admins in @darkbot_Chit_Chat"
 ).add()

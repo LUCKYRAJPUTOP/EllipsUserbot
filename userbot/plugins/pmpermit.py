@@ -9,15 +9,15 @@ from telethon import events, functions
 from telethon.tl.functions.users import GetFullUserRequest
 
 from userbot.plugins.sql_helper import pmpermit_sql as pmpermit_sql
-from userbot import ALIVE_NAME, CUSTOM_PMPERMIT, mafia_ID
+from userbot import ALIVE_NAME, CUSTOM_PMPERMIT, dark_ID
 from userbot.Config import Config
-from mafiabot.utils import admin_cmd
+from darkbot.utils import admin_cmd
 from userbot.cmdhelp import CmdHelp
 
 PM_TRUE_FALSE = Config.PM_DATA
 
 PMPERMIT_PIC = os.environ.get("PMPERMIT_PIC", None)
-MAFIAPIC = (
+darkPIC = (
     PMPERMIT_PIC
     if PMPERMIT_PIC
     else "https://telegra.ph/file/503a886dc82e9f5b233a8.jpg"
@@ -30,7 +30,7 @@ h1m4n5hu0p = (
     if CUSTOM_PMPERMIT
     else "**YOU HAVE TRESPASSED TO MY MASTERS INBOX** \n THIS IS ILLEGAL AND REGARDED AS CRIME"
 )
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Mafia User"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "dark User"
 USER_BOT_WARN_ZERO = "**You were spamming my sweet master's inbox, henceforth you have been blocked by my master's Darkbot.**\n__Now GTFO, i'm busy__"
 USER_BOT_NO_WARN = (
     "Hello, This is **Darkbot Ultra Private Security Protocol⚠️**.\n"
@@ -205,7 +205,7 @@ if Var.PRIVATE_GROUP_ID is not None:
                     out_file,
                     force_document=True,
                     allow_cache=False,
-                    caption="[MafiaBot]Current Approved PMs",
+                    caption="[darkbot]Current Approved PMs",
                     reply_to=event,
                 )
                 await event.delete()
@@ -287,7 +287,7 @@ if Var.PRIVATE_GROUP_ID is not None:
             except:
                 return
         r = await borg.send_file(
-            event.chat_id, MAFIAPIC, caption=USER_BOT_NO_WARN, force_document=False
+            event.chat_id, darkPIC, caption=USER_BOT_NO_WARN, force_document=False
         )
         PM_WARNS[chat_id] += 1
         if chat_id in PREV_REPLY_MESSAGE:

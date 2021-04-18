@@ -1,4 +1,4 @@
-from mafiabot.utils import *
+from darkbot.utils import *
 from userbot.cmdhelp import CmdHelp
 
 

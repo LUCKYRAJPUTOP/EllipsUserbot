@@ -7,7 +7,7 @@ import requests
 
 from userbot import CMD_HELP
 from userbot.Config import Config
-from mafiabot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from darkbot.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 import urllib3
 
@@ -22,7 +22,7 @@ HEROKU_API_KEY = Config.HEROKU_API_KEY
 
 Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
-mafia_logo = "./H1M4N5HU0P/mafiabot_logo.jpg"
+dark_logo = "./H1M4N5HU0P/darkbot_logo.jpg"
 
 
 @borg.on(
@@ -184,19 +184,19 @@ async def _(dyno):
     try:
         Heroku = heroku3.from_key(HEROKU_API_KEY)
         app = Heroku.app(HEROKU_APP_NAME)
-        thumb = mafia_logo
+        thumb = dark_logo
     except:
         return await dyno.reply(
-            " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku\n\n[Visit Support Group For Help](https://t.me/mafiabot_official_chat)"
+            " Please make sure your Heroku API Key, Your App name are configured correctly in the heroku\n\n[Visit Support Group For Help](https://t.me/darkbot_official_chat)"
         )
-    mafia_data = app.get_log()
-    mafia_key = (
-        requests.post("https://nekobin.com/api/documents", json={"content": mafia_data})
+    dark_data = app.get_log()
+    dark_key = (
+        requests.post("https://nekobin.com/api/documents", json={"content": dark_data})
         .json()
         .get("result")
         .get("key")
     )
-    mafia_url = f"⚡ Pasted this logs.txt to [NekoBin](https://nekobin.com/{mafia_key}) && [RAW PAGE](https://nekobin.com/raw/{mafia_key}) ⚡"
+    dark_url = f"⚡ Pasted this logs.txt to [NekoBin](https://nekobin.com/{dark_key}) && [RAW PAGE](https://nekobin.com/raw/{dark_key}) ⚡"
     await dyno.edit("Getting Logs....")
     with open("logs.txt", "w") as log:
         log.write(app.get_log())
@@ -206,7 +206,7 @@ async def _(dyno):
         "logs.txt",
         reply_to=dyno.id,
         thumb=thumb,
-        caption=mafia_url,
+        caption=dark_url,
     )
 
     await asyncio.sleep(5)

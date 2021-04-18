@@ -3,7 +3,7 @@ import os
 
 import requests
 
-from mafiabot.utils import admin_cmd, sudo_cmd, edit_or_reply
+from darkbot.utils import admin_cmd, sudo_cmd, edit_or_reply
 from userbot.cmdhelp import CmdHelp
 
 def ocr_space_file(
@@ -126,7 +126,7 @@ async def parse_ocr_space_api(event):
             int(test_file["ProcessingTimeInMilliseconds"]) // 1000
         )
     except Exception as e:
-        await edit_or_reply(event, "Errors.\n `{}`\nReport This to @MafiaBot_Support\n\n`{}`".format(
+        await edit_or_reply(event, "Errors.\n `{}`\nReport This to @darkbot_Support\n\n`{}`".format(
                 str(e), json.dumps(test_file, sort_keys=True, indent=4)
             )
         )

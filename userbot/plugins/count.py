@@ -5,7 +5,7 @@ from telethon.tl.custom import Dialog
 from telethon.tl.types import Channel, Chat, User
 
 from userbot import CMD_HELP
-from mafiabot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from darkbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 from userbot.cmdhelp import CmdHelp
 
 @bot.on(admin_cmd(pattern="stats$"))
@@ -14,7 +14,7 @@ async def stats(
     event: NewMessage.Event,
 ) -> None:  # pylint: disable = R0912, R0914, R0915
     """Command to get stats about the account"""
-    mafia = await edit_or_reply(event, "`Collecting stats...`")
+    dark = await edit_or_reply(event, "`Collecting stats...`")
     start_time = time.time()
     private_chats = 0
     bots = 0
@@ -82,7 +82,7 @@ async def stats(
     response += (
         f"⚡ **EXTRACTED FROM The Directory Of** :-.            [⚡𝙳𝙰𝚁𝙺𝙱𝙾𝚃🔥](https://t.me/Dark_bot_support)"
     )
-    await mafia.edit(response)
+    await dark.edit(response)
 
 
 def make_mention(user):

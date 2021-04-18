@@ -1,8 +1,8 @@
-# PLUGIN MADE BY @H1M4N5HU0P FOR MAFIABOT
+# PLUGIN MADE BY @H1M4N5HU0P FOR darkbot
 # KEEP CREDITS ELSE GAY
 
 import random, re
-from mafiabot.utils import admin_cmd
+from darkbot.utils import admin_cmd
 import asyncio
 from telethon import events	
 @borg.on(admin_cmd(pattern="hklove", outgoing=True))

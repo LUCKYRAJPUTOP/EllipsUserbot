@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String
 
-from mafiabot.plugins.sql_helper import BASE, SESSION
+from darkbot.plugins.sql_helper import BASE, SESSION
 
 
 class Moidata(BASE):

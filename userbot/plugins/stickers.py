@@ -15,7 +15,7 @@ from telethon.tl.types import (
 
 #from userbot import CMD_HELP
 from userbot.Config import Config
-from mafiabot.utils import *
+from darkbot.utils import *
 from userbot.cmdhelp import CmdHelp
 
 KANGING_STR = [
@@ -31,7 +31,7 @@ KANGING_STR = [
     "Mr.Steal Your Sticker is stealing this sticker... ",
 ]
 
-mafiabot = Config.CUSTOM_STICKER_PACK_NAME
+darkbot = Config.CUSTOM_STICKER_PACK_NAME
 
 
 @bot.on(admin_cmd(outgoing=True, pattern="kang"))
@@ -101,8 +101,8 @@ async def kang(args):
 
         packname = f"HB_{user.username}_Darkbot_{pack}"
         packnick = (
-            f"{mafiabot} Vol.{pack}"
-            if mafiabot
+            f"{darkbot} Vol.{pack}"
+            if darkbot
             else f"@{user.username}'s Darkbot Vol.{pack}"
         )
         cmd = "/newpack"
@@ -137,7 +137,7 @@ async def kang(args):
                     pack += 1
                     packname = f"HB_{user.username}_by_{user.username}_{pack}"
                     packnick = (
-                        f"{mafiabot} Vol.{pack}"
+                        f"{darkbot} Vol.{pack}"
                         if Darkbot
                         else f"@{user.username}'s Darkbot Vol.{pack}"
                     )

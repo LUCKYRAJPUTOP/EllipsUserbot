@@ -1,7 +1,7 @@
 import time
 
-from userbot import ALIVE_NAME, StartTime, mafiaversion
-from mafiabot.utils import admin_cmd, edit_or_reply, sudo_cmd
+from userbot import ALIVE_NAME, StartTime, darkversion
+from darkbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
 async def reply_id(event):
@@ -14,7 +14,7 @@ async def reply_id(event):
 
 
 DEFAULTUSER = ALIVE_NAME or "Dark User"
-MAFIA_IMG = Config.ALIVE_PIC
+dark_IMG = Config.ALIVE_PIC
 CUSTOM_ALIVE_TEXT = Config.ALIVE_MSG or "𝕄𝔸𝕊𝕋𝔼ℝ_𝔸𝕋_𝔻𝔸ℝ𝕂𝔹𝕆𝕋"
 
 USERID = bot.uid
@@ -60,16 +60,16 @@ async def amireallyalive(alive):
         return
     reply_to_id = await reply_id(alive)
 
-    if MAFIA_IMG:
-        mafia_caption = f"**{CUSTOM_ALIVE_TEXT}**\n\n"
-        mafia_caption += f"≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈\n"
-        mafia_caption += f"__**𝔹𝕆𝕋 𝕊𝕋𝔸𝕋𝕌𝕊**__\n\n"
-        mafia_caption += f"**★ 𝕋𝕖𝕝𝕖𝕥𝕙𝕠𝕟 𝕧𝕖𝕣𝕤𝕚𝕠𝕟 :** `1.15.0`\n"
-        mafia_caption += f"**★ 𝔻𝔸ℝ𝕂𝔹𝕆𝕋 :**`{mafiaversion}`\n"
-        mafia_caption += f"**★ 𝕌𝕡𝕥𝕚𝕞𝕖 :** `{uptime}\n`"
-        mafia_caption += f"**★ 𝕄𝕒𝕤𝕥𝕖𝕣 :** {mention}\n"
+    if dark_IMG:
+        dark_caption = f"**{CUSTOM_ALIVE_TEXT}**\n\n"
+        dark_caption += f"≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈\n"
+        dark_caption += f"__**𝔹𝕆𝕋 𝕊𝕋𝔸𝕋𝕌𝕊**__\n\n"
+        dark_caption += f"**★ 𝕋𝕖𝕝𝕖𝕥𝕙𝕠𝕟 𝕧𝕖𝕣𝕤𝕚𝕠𝕟 :** `1.15.0`\n"
+        dark_caption += f"**★ 𝔻𝔸ℝ𝕂𝔹𝕆𝕋 :**`{darkversion}`\n"
+        dark_caption += f"**★ 𝕌𝕡𝕥𝕚𝕞𝕖 :** `{uptime}\n`"
+        dark_caption += f"**★ 𝕄𝕒𝕤𝕥𝕖𝕣 :** {mention}\n"
         await alive.client.send_file(
-            alive.chat_id, MAFIA_IMG, caption=mafia_caption, reply_to=reply_to_id
+            alive.chat_id, dark_IMG, caption=dark_caption, reply_to=reply_to_id
         )
         await alive.delete()
     else:
@@ -79,7 +79,7 @@ async def amireallyalive(alive):
             f"≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈≈ \n"
             f"__**𝔹𝕆𝕋 𝕊𝕋𝔸𝕋𝕌𝕊**__\n\n"
             f"**★ 𝕋𝕖𝕝𝕖𝕥𝕙𝕠𝕟 𝕧𝕖𝕣𝕤𝕚𝕠𝕟 :** `1.15.0`\n"
-            f"**★ 𝔻𝔸ℝ𝕂𝔹𝕆𝕋 :** `{mafiaversion}`\n"
+            f"**★ 𝔻𝔸ℝ𝕂𝔹𝕆𝕋 :** `{darkversion}`\n"
             f"**★ 𝕌𝕡𝕥𝕚𝕞𝕖 :** `{uptime}\n`"
             f"**★ 𝕄𝕒𝕤𝕥𝕖𝕣 :** {mention}\n",
         )

@@ -10,7 +10,7 @@ from telethon.errors import PhotoInvalidDimensionsError
 from telethon.errors.rpcerrorlist import YouBlockedUserError
 from telethon.tl.functions.messages import SendMediaRequest
 
-from mafiabot.utils import admin_cmd, edit_or_reply, progress, sudo_cmd
+from darkbot.utils import admin_cmd, edit_or_reply, progress, sudo_cmd
 from userbot import CMD_HELP
 from userbot.helpers.functions import unzip
 from userbot.cmdhelp import CmdHelp
@@ -21,13 +21,13 @@ if not os.path.isdir("./temp"):
 
 @bot.on(admin_cmd(pattern="stoi$"))
 @bot.on(sudo_cmd(pattern="stoi$", allow_sudo=True))
-async def _(mafia):
-    if mafia.fwd_from:
+async def _(dark):
+    if dark.fwd_from:
         return
-    reply_to_id = mafia.message.id
-    if mafia.reply_to_msg_id:
-        reply_to_id = mafia.reply_to_msg_id
-    event = await edit_or_reply(mafia, "Converting.....")
+    reply_to_id = dark.message.id
+    if dark.reply_to_msg_id:
+        reply_to_id = dark.reply_to_msg_id
+    event = await edit_or_reply(dark, "Converting.....")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -36,11 +36,11 @@ async def _(mafia):
         reply_message = await event.get_reply_message()
         to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await mafia.client.download_media(
+        downloaded_file_name = await dark.client.download_media(
             reply_message, downloaded_file_name
         )
         if os.path.exists(downloaded_file_name):
-            caat = await mafia.client.send_file(
+            caat = await dark.client.send_file(
                 event.chat_id,
                 downloaded_file_name,
                 force_document=False,
@@ -56,13 +56,13 @@ async def _(mafia):
 
 @bot.on(admin_cmd(pattern="itos$"))
 @bot.on(sudo_cmd(pattern="itos$", allow_sudo=True))
-async def _(mafia):
-    if mafia.fwd_from:
+async def _(dark):
+    if dark.fwd_from:
         return
-    reply_to_id = mafia.message.id
-    if mafia.reply_to_msg_id:
-        reply_to_id = mafia.reply_to_msg_id
-    event = await edit_or_reply(mafia, "Converting.....")
+    reply_to_id = dark.message.id
+    if dark.reply_to_msg_id:
+        reply_to_id = dark.reply_to_msg_id
+    event = await edit_or_reply(dark, "Converting.....")
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
     if event.reply_to_msg_id:
@@ -71,11 +71,11 @@ async def _(mafia):
         reply_message = await event.get_reply_message()
         to_download_directory = Config.TMP_DOWNLOAD_DIRECTORY
         downloaded_file_name = os.path.join(to_download_directory, file_name)
-        downloaded_file_name = await mafia.client.download_media(
+        downloaded_file_name = await dark.client.download_media(
             reply_message, downloaded_file_name
         )
         if os.path.exists(downloaded_file_name):
-            caat = await mafia.client.send_file(
+            caat = await dark.client.send_file(
                 event.chat_id,
                 downloaded_file_name,
                 force_document=False,
@@ -157,31 +157,31 @@ async def on_file_to_photo(event):
 async def _(event):
     if event.fwd_from:
         return
-    mafiareply = await event.get_reply_message()
-    if not mafiareply or not mafiareply.media or not mafiareply.media.document:
+    darkreply = await event.get_reply_message()
+    if not darkreply or not darkreply.media or not darkreply.media.document:
         return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
-    if mafiareply.media.document.mime_type != "application/x-tgsticker":
+    if darkreply.media.document.mime_type != "application/x-tgsticker":
         return await edit_or_reply(event, "`Stupid!, This is not animated sticker.`")
     reply_to_id = event.message
     if event.reply_to_msg_id:
         reply_to_id = await event.get_reply_message()
     chat = "@tgstogifbot"
-    mafiaevent = await edit_or_reply(event, "`Converting to gif ...`")
+    darkevent = await edit_or_reply(event, "`Converting to gif ...`")
     async with event.client.conversation(chat) as conv:
         try:
             await silently_send_message(conv, "/start")
-            await event.client.send_file(chat, mafiareply.media)
+            await event.client.send_file(chat, darkreply.media)
             response = await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
             if response.text.startswith("Send me an animated sticker!"):
-                return await mafiaevent.edit("`This file is not supported`")
-            mafiaresponse = response if response.media else await conv.get_response()
+                return await darkevent.edit("`This file is not supported`")
+            darkresponse = response if response.media else await conv.get_response()
             await event.client.send_read_acknowledge(conv.chat_id)
-            mafiafile = Path(await event.client.download_media(mafiaresponse, "./temp/"))
-            mafiagif = Path(await unzip(mafiafile))
+            darkfile = Path(await event.client.download_media(darkresponse, "./temp/"))
+            darkgif = Path(await unzip(darkfile))
             kraken = await event.client.send_file(
                 event.chat_id,
-                mafiagif,
+                darkgif,
                 support_streaming=True,
                 force_document=False,
                 reply_to=reply_to_id,
@@ -196,12 +196,12 @@ async def _(event):
                     unsave=True,
                 )
             )
-            await mafiaevent.delete()
-            for files in (mafiagif, mafiafile):
+            await darkevent.delete()
+            for files in (darkgif, darkfile):
                 if files and os.path.exists(files):
                     os.remove(files)
         except YouBlockedUserError:
-            await mafiaevent.edit("Unblock @tgstogifbot")
+            await darkevent.edit("Unblock @tgstogifbot")
             return
 
 
