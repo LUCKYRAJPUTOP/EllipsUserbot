@@ -6,7 +6,7 @@ from userbot import bot as darkbot
 from userbot import ALIVE_NAME
 
 DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "dark User"
-dark_logo = "./H1M4N5HU0P/darkbot_logo.jpg"
+dark_logo = ".Harsh-78darkbot_logo.jpg"
 
 @darkbot.on(admin_cmd(pattern=r"cmds"))
 @darkbot.on(sudo_cmd(pattern=r"cmds", allow_sudo=True))

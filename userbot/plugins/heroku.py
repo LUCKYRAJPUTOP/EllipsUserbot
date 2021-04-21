@@ -22,7 +22,7 @@ HEROKU_API_KEY = Config.HEROKU_API_KEY
 
 Heroku = heroku3.from_key(Var.HEROKU_API_KEY)
 heroku_api = "https://api.heroku.com"
-dark_logo = "./H1M4N5HU0P/darkbot_logo.jpg"
+dark_logo = ".Harsh-78darkbot_logo.jpg"
 
 
 @borg.on(
