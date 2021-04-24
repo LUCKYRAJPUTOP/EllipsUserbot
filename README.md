@@ -35,7 +35,7 @@ Very easy to deploy. You can deploy EllipsBot in very less time
 
 <h4>⚜️ DEPLOY TO HEROKU ⚜️</h4>
 
-[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/LUCKYRAJPUTOP/EllipsUserbot)
+https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2FLUCKYRAJPUTOP%2FEllipsUserbot&template=https%3A%2F%2Fgithub.com%2FLUCKYRAJPUTOP%2FEllipsUserbot
 
 <h2 align="center"> <a href="https://github.com/LuckyRajputOP/EllipsUserbot">⚡  E L L I P S U S E R B O T ⚡</a></h2>
 
